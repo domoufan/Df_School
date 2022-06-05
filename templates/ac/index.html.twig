@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+
+
+{% block stylesheets %}
+ <style>
+    
+ </style>
+{% endblock %}
+
+
+{% block body %}
+  <div class="container-fluid">
+    <h2 class="text-center">
+      Liste des ac
+    </h2>
+
+    <a class="btn btn-dark text-light col-12" href="i_ac">Ajouter</a>
+
+    <div class="container-fluid">
+      <table class="table table-striped|sm|bordered|hover|inverse table-inverse table-responsive tabAff">
+        <tr>
+          <th>
+            #
+          </th>
+          <th>
+            id
+          </th>
+          <th>
+            nom complet
+          </th>
+          <th>
+            login
+          </th>
+          <th>
+            password
+          </th>
+          <th>
+            Actions
+          </th>
+        </tr>
+
+        {% set i = 0 %}
+        {% for value in Pagination %}
+          {% set i = i + 1 %}
+          <tr>
+            <td>
+              {{ i }}
+            </td>
+            <td>
+              {{ value.id }}
+            </td>
+            <td>
+              {{ value.nomComplet }}
+            </td>
+            <td>
+              {{ value.email }}
+            </td>
+            <td>
+              {{ value.password }}
+            </td>
+            <td>
+              <a class="btn btn-primary text-light">Modifier</a>
+              <a class="btn btn-secondary text-light" href="ac/{{ value.id }}">Detail</a>
+              <a class="btn btn-danger text-light" href="s_ac/{{ value.id }}">Supprimer</a>
+            </td>
+          </tr>
+        {% endfor %}
+      </table>
+    </div>
+  </div>
+  <div class="bg-warning display-6 rounded m float-end col-1 ">
+    {{knp_pagination_render(Pagination)}}
+  </div>
+
+  
+{% endblock %}

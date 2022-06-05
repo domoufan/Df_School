@@ -1,0 +1,84 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="container-fluid">
+        <h2 class="text-center ">
+            Liste des Etudiants          
+        </h2>
+        <a class="btn btn-dark text-light col-12" href="i_ac">
+            Ajouter
+         
+        </a>
+        <div class="container-fluid">
+
+            <table class="table table-striped|sm|bordered|hover|inverse table-inverse table-responsive">
+
+                <tr>
+                    <th>
+                        #
+                        
+                    </th>
+                    <th>
+                        id
+                      
+                    </th>
+                    <th>
+                        nom complet
+                      
+                    </th>
+                    <th>
+                        login
+                         
+                    </th>
+                    <th>
+                        password
+                    
+                    </th>
+                    <th>
+                        Actions
+                      
+                    </th>
+                </tr>
+                {% set i = 0 %}
+                {% for value in etudiants %}
+                    {% set i = i + 1 %}
+                    <tr>
+                        <td>
+                            {{ i }}
+                        </td>
+                        <td>
+                            {{ value.id }}
+                        </td>
+                        <td>
+                            {{ value.nomComplet }}
+                        </td>
+                        <td>
+                            {{ value.email }}
+                        </td>
+                        <td>
+                            {{ value.password }}
+                        </td>
+                        <td>
+                            <a class="btn btn-primary text-light">
+                                Modifier                                                              
+                                                            
+                            </a>
+                            <a class="btn btn-secondary text-light" href="ac/<?= $acs->id ?>">
+                                Detail                                                                
+                                                            
+                            </a>
+                            <a class="btn btn-danger text-light">
+                                Supprimer                               
+                            </a>
+                        </td>
+                    </tr>
+                    <br>
+                    {% endfor %}
+                </table>
+
+            </div>
+        </div>
+
+    {% endblock %}
+    
